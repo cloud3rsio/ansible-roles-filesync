@@ -1,0 +1,5 @@
+---
+filesync_source_directory: /var/www/html
+filesync_source_targets:
+  - ip: 127.0.0.1
+    app_name: default

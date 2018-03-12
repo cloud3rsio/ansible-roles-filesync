@@ -1,0 +1,10 @@
+---
+- name: restart_xinetd_service
+  service:
+    name: xinetd
+    state: restarted
+
+- name: restart_xinetd_systemd
+  service:
+    name: xinetd
+    state: restarted

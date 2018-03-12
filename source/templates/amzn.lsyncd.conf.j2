@@ -1,0 +1,26 @@
+-- global
+settings {
+	logfile = "/var/log/lsyncd.log",
+	statusFile = "/var/cache/lsync_status",
+	maxProcesses = 5,
+	nodaemon = false,
+	insist = 1,
+}
+
+{% for target in filesync_source_targets %}
+sync {
+	default.rsync,
+	source = "{{ filesync_source_directory }}",
+	target = "{{ target.ip }}::{{ target.app_name }}",
+	delete = true,
+	rsync = {
+		archive = true,
+		links = true,
+		update = true,
+		verbose = false,
+		owner = true,
+		perms = true,
+		group = true,
+	}
+}
+{% endfor %}

@@ -1,0 +1,18 @@
+---
+- yum:
+    name: lsyncd,libxml2-devel,lua-devel,lua-static,rsync
+    state: present
+
+- template:
+    src: centos7.lsyncd.conf.j2
+    dest: /etc/lsyncd.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart_lsyncd_systemd
+
+- systemd:
+    name: lsyncd
+    state: started
+    enabled: yes

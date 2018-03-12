@@ -1,0 +1,10 @@
+---
+- name: restart_lsyncd_service
+  service:
+    name: lsyncd
+    state: restarted
+
+- name: restart_lsyncd_systemd
+  service:
+    name: lsyncd
+    state: restarted

@@ -1,0 +1,27 @@
+---
+- yum:
+    name: rsync,xinetd
+    state: present
+
+- template:
+    src: amzn.rsyncd.conf.j2
+    dest: /etc/rsyncd.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart_xinetd_service
+
+- template:
+    src: amzn.rsync.j2
+    dest: /etc/xinetd.d/rsync
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart_xinetd_service
+
+- service:
+    name: xinetd
+    state: started
+    enabled: yes

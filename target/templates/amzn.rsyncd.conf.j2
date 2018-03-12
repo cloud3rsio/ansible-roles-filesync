@@ -1,0 +1,9 @@
+uid = root
+gid = root
+log file = /var/log/rsyncd.log
+pid file = /var/run/rsyncd.pid
+read only = no
+
+[{{ filesync_target_app_name }}]
+        path = {{ filesync_target_path }}
+        hosts allow = {{ filesync_target_allow_ip }}
